@@ -1,0 +1,36 @@
+.title{
+    text-align: left;
+    color: white;
+}
+
+#navigation{
+    background-color: #2FA4FF;
+    
+}
+
+.navbuttons{
+    color: black;
+    padding: 0 5px;
+    
+}
+
+.container-fluid{
+    padding: 3% 15% 9%;
+}
+
+#bookings{
+    text-align: center;
+    padding: 3% 15% 9%;
+}
+
+#order{
+    text-align: center;
+    padding: 40px 15% 20px;
+    background-color: #2FA4FF;
+    color: white;
+}
+
+hr{
+    width: 30%;
+    margin: 0 auto;
+}
