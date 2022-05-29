@@ -19,20 +19,23 @@ app.config["MAIL_USE_SSL"]=True
 
 mail=Mail(app)
 
+
+# give a template with all the data of bookings in it
+# first page of our website with all the data
 @app.route("/")
-def  home():
+def  bookings():
     data = list(db.issue.find())
     # print(data[0]["booking_past"][1]["doctor"])
-    return render_template("home.html", data_list=data[0])
+    return render_template("bookings.html", data_list=data[0])
 
 
-
+# render to new booking htmll page
 @app.route("/newbookingsform/")
 def  newbookingsform():
     return render_template("newbookingsform.html")
 
 
-# take data from our booking form
+# take data from new booking form
 @app.route("/updatebooking/", methods=["POST"])
 def  updatebooking():
     data = {"issue":request.form["issue"],
@@ -42,17 +45,20 @@ def  updatebooking():
 
     db.issue.update_one(
         {"_id":ObjectId("62908d89bd4d5ddf11be908a")},
-        # bookings is an arry in mongoDB
+        # bookings is an arry in mongoDB which contains new booking data
         {"$push":{"bookings":data}}
     )
     return redirect("/")
 
-@app.route("/form/")
-def  form():
+# to get prescription data
+@app.route("/prescriptionform/")
+def  prescriptionform():
     data = list(db.prescription.find())
 
-    return render_template("form.html",data_list=data)
+    return render_template("prescriptionform.html",data_list=data)
 
+
+# to send mail
 @app.route("/email/<id>/<email>/",methods=["POST"])
 def email(id,email):
     data = db.prescription.find_one( {"_id":ObjectId(id)})
