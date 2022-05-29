@@ -22,7 +22,13 @@
 #bookings{
     text-align: center;
     padding: 3% 15% 9%;
+   
 }
+
+#bookingcard{
+margin-top: 20px;
+}
+
 
 #order{
     text-align: center;
@@ -34,4 +40,10 @@
 hr{
     width: 30%;
     margin: 0 auto;
+}
+
+
+/* Booking */
+#newbooking{
+text-align: center;
 }
